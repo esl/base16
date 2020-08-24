@@ -6,7 +6,7 @@
   {applications, [kernel,
                   stdlib]},
   {env, []},
-  {maintainers, ["Krzysiek Goj"]},
+  {maintainers, ["ESL"]},
   {licenses, ["MIT", "GPL (for tests)"]},
-  {links, [{"Github", "https://github.com/goj/base16"}]}
+  {links, [{"Github", "https://github.com/esl/base16"}]}
  ]}.
