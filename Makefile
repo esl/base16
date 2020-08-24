@@ -1,18 +1,31 @@
-.PHONY: all compile test clean
+.PHONY: rel deps test
 
-all: compile
+all: deps compile
 
-compile:
-	./rebar get-deps compile
+compile: rebar3
+	./rebar3 compile
 
-test: compile
-	./rebar -C rebar.tests.config skip_deps=true eunit
+deps: rebar3
+	./rebar3 get-deps
 
-clean:
-	./rebar clean
+clean: rebar3
+	./rebar3 clean
 
-compile test clean: rebar
+test-deps: rebar3
+	./rebar3 get-deps
 
-rebar:
-	wget -c http://cloud.github.com/downloads/basho/rebar/rebar
-	chmod +x $@
+test-compile: rebar3 test-deps
+	./rebar3 compile
+
+test: test-compile
+	./rebar3 ct
+
+codecov: _build/test/cover/ct.coverdata
+	./rebar3 as test codecov analyze
+
+rebar3:
+	wget https://github.com/erlang/rebar3/releases/download/3.13.2/rebar3 &&\
+	chmod u+x rebar3
+
+dialyzer: rebar3
+	./rebar3 dialyzer
