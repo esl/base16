@@ -16,8 +16,16 @@ B = base16:decode(H).
 
 Please, note:
 
-   * `base16:encode/1` uses upper-case latters.
-   * `base16:decode/1` requires the argument to be a binary of odd-number size.
+   * `base16:encode/1` returns lower-case letters.
+   * `base16:decode/1` requires the argument to be a binary of odd-number size, and it parses both
+     in upper-case or lower-case encoding.
+
+
+Implementation
+--------------
+
+Code is implemented using lookup tables, which tremendously speeds-up the algorithm and consumes
+constant memory. It's the fastest you can get using pure Erlang code!
 
 
 License
