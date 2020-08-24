@@ -1,10 +1,3 @@
-%%%===================================================================
-%%% @copyright (C) 2012, Erlang Solutions Ltd.
-%%% This file is licensed under BSD 2-Clause License (see LICENSE file)
-%%% @doc Encoding and decoding of Base16-encoded binaries
-%%% @end
-%%%===================================================================
-
 -module(base16).
 
 -export([encode/1, decode/1]).

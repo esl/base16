@@ -7,6 +7,6 @@
                   stdlib]},
   {env, []},
   {maintainers, ["Krzysiek Goj"]},
-  {licenses, ["BSD (for code)", "GPL (for tests)"]},
+  {licenses, ["MIT", "GPL (for tests)"]},
   {links, [{"Github", "https://github.com/goj/base16"}]}
  ]}.

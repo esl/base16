@@ -1,6 +1,6 @@
 %%%-------------------------------------------------------------------
 %%% @copyright (C) 2012, Erlang Solutions Ltd.
-%%% This file is licensed under GPLv3 license.
+%%% This file is licensed under GPLv3 license due to using `proper`
 %%% See http://www.gnu.org/licenses/gpl-3.0.txt
 %%%
 %%% @doc Basic tests for base16 module

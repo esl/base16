@@ -31,7 +31,7 @@ constant memory. It's the fastest you can get using pure Erlang code!
 License
 -------
 
-The library itself is licensed under the Simplified (2-clause) BSD license.
+The library itself is licensed under the MIT License.
 
 The tests, due to dependency on [PropEr], are licensed under the GPLv3 license.
 
