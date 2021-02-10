@@ -1,6 +1,8 @@
 Base16 encoding and decoding
 ============================
 
+[![Hex](http://img.shields.io/hexpm/v/fast_base16.svg)](https://hex.pm/packages/fast_base16)
+
 API
 ---
 
