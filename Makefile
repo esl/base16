@@ -18,9 +18,9 @@ test-compile: rebar3 test-deps
 	./rebar3 compile
 
 test: test-compile
-	./rebar3 ct
+	./rebar3 as test eunit
 
-codecov: _build/test/cover/ct.coverdata
+codecov: _build/test/cover/eunit.coverdata
 	./rebar3 as test codecov analyze
 
 rebar3:
