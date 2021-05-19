@@ -35,6 +35,14 @@ prop_encode_decode() ->
             H2 =:= list_to_binary(string:to_lower(binary_to_list(H1)))
     end).
 
+prop_compare_algorithms_encode() ->
+    ?FORALL(B, binary(),
+            slow_encode(B) =:= base16:encode(B)).
+
+prop_compare_algorithms_decode() ->
+    ?FORALL(B, even_len_binary(hex_digit()),
+            slow_decode(B) =:= base16:decode(B)).
+
 encode_spec_test() ->
     proper:check_spec({base16, encode, 1}).
 
@@ -69,3 +77,22 @@ even_len_binary(Digit) ->
 
 even_len_list(Elem) ->
     ?SUCHTHAT(L, list(Elem), length(L) rem 2 =:= 0).
+
+
+%%--------------------------------------------------------------------
+%% Older algorithm
+%%--------------------------------------------------------------------
+-spec slow_encode(binary()) -> <<_:_*16>>.
+slow_encode(Data) ->
+    << <<(hex(N div 16)), (hex(N rem 16))>> || <<N>> <= Data >>.
+
+-spec slow_decode(<<_:_*16>>) -> binary().
+slow_decode(Base16) when size(Base16) rem 2 =:= 0 ->
+    << <<(unhex(H) bsl 4 + unhex(L))>> || <<H,L>> <= Base16 >>.
+
+hex(N) when N < 10 -> N + $0;
+hex(N) when N < 16 -> N - 10 + $a.
+
+unhex(D) when $0 =< D andalso D =< $9 -> D - $0;
+unhex(D) when $a =< D andalso D =< $f -> 10 + D - $a;
+unhex(D) when $A =< D andalso D =< $F -> 10 + D - $A.
