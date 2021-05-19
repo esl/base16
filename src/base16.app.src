@@ -1,12 +1,11 @@
 {application, base16,
  [
   {description, "Base16 encoding and decoding"},
-  {vsn, "1.1.1"},
+  {vsn, git},
   {registered, []},
   {applications, [kernel, stdlib]},
   {env, []},
   {maintainers, ["ESL"]},
-  {pkg_name, "fast_base16"},
   {licenses, ["MIT", "GPL (for tests)"]},
   {links, [{"Github", "https://github.com/esl/base16"}]}
  ]}.
