@@ -8,6 +8,7 @@
 %% Public API
 %%--------------------------------------------------------------------
 
+%% @doc Returns lower-case encoding.
 -spec encode(binary()) -> <<_:_*16>>.
 encode(Data) when byte_size(Data) rem 8 =:= 0 ->
     << <<?HEX(A),?HEX(B),?HEX(C),?HEX(D),?HEX(E),?HEX(F),?HEX(G),?HEX(H)>> || <<A,B,C,D,E,F,G,H>> <= Data >>;
@@ -26,6 +27,8 @@ encode(Data) when byte_size(Data) rem 2 =:= 0 ->
 encode(Data) ->
     << <<?HEX(N)>> || <<N>> <= Data >>.
 
+%% @doc Accepts both upper-case and lower-case encodings.
+%% Throws if the argument is not odd-size in bytes.
 -spec decode(<<_:_*16>>) -> binary().
 decode(Base16) when size(Base16) rem 2 =:= 0 ->
     << <<(unhex(Int))>> || <<Int:16>> <= Base16 >>.
